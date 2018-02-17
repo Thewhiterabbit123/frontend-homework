@@ -53,4 +53,26 @@ QUnit.module('Тестируем функцию letters', function () {
 		assert.strictEqual(letters('от топота копыт', false), 'а копыт');
 		assert.strictEqual(letters('hello world', false), 'he world');
 	});
+
+    QUnit.test('Удаляет идущие подряд буквы в разных словах', function (assert) {
+        assert.strictEqual(letters('лллллл ооооо ллллл'), '');
+        assert.strictEqual(letters('kkkk eeee kkkkk'), '');
+
+        assert.strictEqual(letters('лллллл ооооо ллллл', true), 'л о');
+        assert.strictEqual(letters('kkkk eeee kkkkk', true), 'k e');
+
+        assert.strictEqual(letters('лллллл ооооо ллллл', false), 'о л');
+        assert.strictEqual(letters('kkkk eeee kkkkk', false), 'e k');
+    });
+
+    QUnit.test('Оставляет одинаковые символы разного регистра', function (assert) {
+        assert.strictEqual(letters('ИдУ ДоМоЙ'), 'ИдУ ДМЙ');
+        assert.strictEqual(letters('WHEeEL'), 'WHeL');
+
+        assert.strictEqual(letters('ИдУ ДоМоЙ', true), 'ИдУ ДоМЙ');
+        assert.strictEqual(letters('WHEeEL', true), 'WHEeL');
+
+        assert.strictEqual(letters('ИдУ ДоМоЙ', false), 'ИдУ ДМоЙ');
+        assert.strictEqual(letters('WHEeEL', false), 'WHeEL');
+    });
 });
