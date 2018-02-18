@@ -15,11 +15,11 @@ const uniUndef = ( msg, letter, index, letterDelete, flag ) => {
 const letters = ( msg, flag ) => {
     let letterDelete = new Set();
 
-    flag === true ? msg = [...msg].reverse().join('') : msg;
+    flag ? msg = [...msg].reverse().join('') : msg;
 
     let outStr = [...msg].filter( ( letter, index ) => {
         return uniUndef( msg, letter, index, letterDelete, flag );
     }).join( '' );
 
-    return flag === true ? [...outStr].reverse().join( '' ) : outStr;
+    return flag  ? [...outStr].reverse().join( '' ) : outStr;
 };
