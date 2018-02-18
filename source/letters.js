@@ -13,7 +13,7 @@ const uniUndef = ( msg, letter, index, letterDelete, flag ) => {
 };
 
 const letters = ( msg, flag ) => {
-    let letterDelete = new Set();
+    const letterDelete = new Set();
 
     flag ? msg = [...msg].reverse().join('') : msg;
 
